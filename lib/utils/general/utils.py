@@ -770,6 +770,8 @@ def set_listitem_artwork(list_item, data, fanart_data):
             "banner": first_valid(fanart_sources, "banner"),
             "clearart": first_valid(fanart_sources, "clearart"),
             "clearlogo": first_valid(clear_logo, "clearlogo"),
+            "landscape": first_valid(fanart_sources, "landscape"),
+            "discart": first_valid(fanart_sources, "discart"),
             "tvshow.clearart": first_valid(fanart_sources, "clearart"),
             "tvshow.clearlogo": first_valid(clear_logo, "clearlogo"),
             "tvshow.landscape": first_valid(fanart_sources, "landscape"),
@@ -821,6 +823,7 @@ def build_media_metadata(ids, mode: str) -> dict:
         "clearlogo": "",
         "overview": "",
         "clearart": "",
+        "discart": "",
         "keyart": "",
         "banner": "",
         "landscape": "",
@@ -903,7 +906,7 @@ def build_media_metadata(ids, mode: str) -> dict:
         if not tmdb_logo_path and fanart_details.get("clearlogo"):
             metadata["clearlogo"] = fanart_details.get("clearlogo")
 
-        for key in ("fanart", "clearart", "keyart", "banner", "landscape"):
+        for key in ("fanart", "clearart", "keyart", "banner", "landscape", "discart"):
             if fanart_details.get(key):
                 metadata[key] = fanart_details.get(key)
 
